@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كافتيريا الخير للعصاير الطازجة والسندوتشات الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css?family=Cairo:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #ffe9d2 0%, #ecfaf7 100%);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(90deg, #ae8625 0%, #f7ef8a 100%);
+            color: #432616;
+            text-align: center;
+            padding: 40px 10px 25px;
+            border-bottom: 4px solid #ae8625;
+        }
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.4em;
+            color: #6d4b24;
+        }
+        .info-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .info-bar span {
+            display: inline-block;
+            font-size: 1.2em;
+            padding: 8px 18px;
+            margin: 0 8px;
+            background: #f7ef8a90;
+            color: #432616;
+            border-radius: 24px;
+            box-shadow: 0 2px 6px #00000014;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 26px;
+            margin: 30px 0;
+        }
+        .gallery-item {
+            width: 340px;
+            background: #fffbe3;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px #ae86253c;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.04);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+        .gallery-desc {
+            padding: 10px 13px 18px;
+        }
+        .gallery-desc h3 {
+            margin: 0 0 4px;
+            font-size: 1.3em;
+            color: #ae8625;
+        }
+        .gallery-desc p {
+            margin: 0;
+            color: #65441b;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        section.pricelist {
+            background: #eeeeee81;
+            margin: 32px auto;
+            padding: 30px 15px;
+            border-radius: 18px;
+            max-width: 760px;
+            box-shadow: 0 0px 10px #ae862551;
+        }
+        section.pricelist h2 {
+            color: #ae8625;
+            margin-bottom: 17px;
+            font-size: 2em;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .price-table th, .price-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #d1ba83;
+        }
+        .price-table th {
+            background: #f7ef8a54;
+            color: #573e19;
+            font-size: 1.09em;
+        }
+        .price-table td {
+            background: #fffde7;
+            font-size: 1.07em;
+        }
+        .contact {
+            background: #fff3e3a1;
+            max-width: 700px;
+            margin: 35px auto 30px;
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 0px 14px #ae862528;
+        }
+        .contact h3 {
+            color: #ae8625;
+            margin-bottom: 18px;
+            font-size: 1.5em;
+        }
+        .contact p {
+            font-size: 1.13em;
+            margin-bottom: 11px;
+            color: #66512c;
+            line-height: 2;
+        }
+        .contact a {
+            display: inline-block;
+            margin: 7px 8px 0;
+            padding: 9px 21px;
+            background: #ae8625;
+            color: #fffbe7;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.16s;
+        }
+        .contact a:hover {
+            background: #f7ef8a;
+            color: #73571c;
+        }
+        footer {
+            text-align: center;
+            padding: 18px 0;
+            background: #ae8625;
+            color: #fffbe7;
+            font-size: 1.1em;
+            border-radius: 0 0 24px 24px;
+        }
+        @media (max-width: 767px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .gallery-item {
+                width: 92vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>كافتيريا الخير</h1>
+        <p>للعصاير الطازجة والسندوتشات بأنواعها الفاخرة</p>
+    </header>
+    <div class="info-bar">
+        <span>اليمن، تعز، دمنة خدير الكمب</span>
+        <span>أمام الملك فون وجوار صيدلية العفيفي</span>
+        <span>دوام 24 ساعة</span>
+    </div>
+    <!-- معرض صور العصائر والسندوتشات -->
+    <section class="gallery">
+        <!-- العصائر -->
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1464306076886-deb99a6697e8?auto=format&fit=crop&w=600&q=80" alt="عصير برتقال طازج">
+            <div class="gallery-desc">
+                <h3>عصير برتقال طازج</h3>
+                <p>انتعاش لا يُضاهى مع عصير البرتقال الطبيعي المميز لدينا، بنكهة عطرية ومذاق فاخر.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="عصير رمان فاخر">
+            <div class="gallery-desc">
+                <h3>عصير رمان فاخر</h3>
+                <p>عصير الرمان الغني يمنحك طاقة وحيوية، طازج ومصفّى بجودة عالية.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=600&q=80" alt="عصير مانجو ملكي">
+            <div class="gallery-desc">
+                <h3>عصير مانجو ملكي</h3>
+                <p>مانجو طازج مختار بعناية لتحصل على مذاق ملكي غني بالكثافة والحلاوة الطبيعية.</p>
+            </div>
+        </div>
+        <!-- سندوتشات -->
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1600891963986-c9b5dc0baf12?auto=format&fit=crop&w=600&q=80" alt="سندوتش شاورما فاخر">
+            <div class="gallery-desc">
+                <h3>سندوتش شاورما فاخر</h3>
+                <p>شرائح الدجاج المتبلة والمشوية مع صوص خاص وخضار طازجة، ملفوفة بخبز طري.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1519864601760-70112c7b830b?auto=format&fit=crop&w=600&q=80" alt="سندوتش برجر جبنة مميز">
+            <div class="gallery-desc">
+                <h3>برجر جبنة مميز</h3>
+                <p>لحم برجر مشوي مع جبنة غنية، خس وطماطم طازجة وصوصات فاخرة.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1532634896-26909d92f38e?auto=format&fit=crop&w=600&q=80" alt="سندوتش فلافل ومقبلات">
+            <div class="gallery-desc">
+                <h3>سندوتش فلافل ومقبلات</h3>
+                <p>فلافل ذهبية مقرمشة مع سلطة طازجة وصوص طحينة فاخر بمذاق أصيل.</p>
+            </div>
+        </div>
+    </section>
+    <!-- قائمة الأسعار -->
+    <section class="pricelist">
+        <h2>قائمة الأسعار</h2>
+        <table class="price-table">
+            <tr>
+                <th>الصنف</th>
+                <th>الكأس الكبير</th>
+                <th>الكأس الصغير</th>
+                <th>القارورة الكبيرة</th>
+                <th>القارورة الصغيرة</th>
+                <th>اليم القلص</th>
+                <th>اليم القارورة</th>
+            </tr>
+            <tr>
+                <td>عصير طازج (برتقال/رمان/مانجو)</td>
+                <td>500 ريال</td>
+                <td>250 ريال</td>
+                <td>1000 ريال</td>
+                <td>500 ريال</td>
+                <td>200 ريال</td>
+                <td>300 ريال</td>
+            </tr>
+        </table>
+        <br>
+        <table class="price-table">
+            <tr>
+                <th>الصنف</th>
+                <th>السعر</th>
+            </tr>
+            <tr>
+                <td>سندوتش شاورما فاخر</td>
+                <td>500 ريال</td>
+            </tr>
+            <tr>
+                <td>برجر جبنة مميز</td>
+                <td>700 ريال</td>
+            </tr>
+            <tr>
+                <td>فلافل مع مقبلات</td>
+                <td>400 ريال</td>
+            </tr>
+        </table>
+    </section>
+    <!-- معلومات التواصل والعنوان -->
+    <div class="contact">
+        <h3>للتواصل والحجز:</h3>
+        <p>واتساب أو اتصال مباشر:<br>
+            <a href="https://wa.me/967730528609" target="_blank">+967730528609</a>
+        </p>
+        <p>
+            <b>العنوان:</b><br>اليمن - تعز - دمنة خدير الكمب، أمام الملك فون وجوار صيدلية العفيفي<br>
+            <b>دوام 24 ساعة</b>
+        </p>
+    </div>
+    <footer>
+        جميع الحقوق محفوظة &copy; 2025 كافتيريا الخير للعصاير الطازجة والسندوتشات الفاخرة.
+    </footer>
+</body>
+</html>

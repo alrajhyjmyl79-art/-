@@ -1212,3 +1212,349 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كافتيريا الخير | موقع فاخر للعصائر والسندويتشات</title>
+    <meta name="description" content="أشهى العصائر الطبيعية والسندويتشات المحضرة بحب وعناية في كافتيريا الخير.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #2E7D32; /* A deep, rich green */
+            --secondary-color: #FF8F00; /* A vibrant orange for accents */
+            --background-color: #F5F5F5; /* A very light grey */
+            --text-color: #333333;
+            --light-text-color: #FFFFFF;
+            --card-bg-color: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg-color);
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 700;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h2 {
+            font-size: 2.8em;
+        }
+
+        /* Main Content & Sections */
+        main section {
+            padding: 60px 0;
+        }
+
+        main section#menu {
+            background-color: var(--card-bg-color);
+        }
+
+        main h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        main h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* NEW Menu Section Styles */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .menu-item {
+            background-color: var(--card-bg-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden; /* To keep image corners rounded */
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item-content h4 {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            margin: 0 0 10px;
+        }
+
+        .menu-item-content p.description {
+            margin: 0 0 15px;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .menu-item-content .price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.5em;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        /* About Section */
+        #about {
+             background-color: #fff;
+        }
+        #about p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer h3 {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>كافتيريا الخير</h1>
+            <p>للعصائر الطازجة والسندويتشات بأنواعها</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#menu">قائمة الأسعار</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact">تواصل معنا</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h2>أهلاً وسهلاً في كافتيريا الخير</h2>
+                <p>نقدم لكم أشهى العصائر الطبيعية والسندويتشات المحضرة بحب وعناية.</p>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="container">
+                <h2>قائمتنا الفاخرة</h2>
+                <div class="menu-items">
+                    
+                    <!-- الصنف الأول -->
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=1974&auto=format&fit=crop" alt="عصير طازج">
+                        <div class="menu-item-content">
+                            <h4>عصير طازج (قلص)</h4>
+                            <p class="description">اختر من تشكيلتنا المنعشة (مانجو، برتقال، ليمون بالنعناع).</p>
+                            <p class="price">500 ريال</p>
+                        </div>
+                    </div>
+
+                    <!-- الصنف الثاني -->
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1610970881699-44a5c8a0f493?q=80&w=1974&auto=format&fit=crop" alt="عصير مركز">
+                        <div class="menu-item-content">
+                            <h4>قارورة عصير مركز</h4>
+                            <p class="description">نكهة غنية ومكثفة لتستمتع بها في أي وقت.</p>
+                            <p class="price">700 ريال</p>
+                        </div>
+                    </div>
+
+                    <!-- الصنف الثالث -->
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1553909489-cd47e0907910?q=80&w=1925&auto=format&fit=crop" alt="سندويتش شهي">
+                        <div class="menu-item-content">
+                            <h4>سندويتش لحم فاخر</h4>
+                            <p class="description">شرائح لحم طرية مع جبنة شيدر وصوص الباربيكيو الخاص.</p>
+                            <p class="price">1000 ريال</p>
+                        </div>
+                    </div>
+
+                    <!-- الصنف الرابع -->
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1579584393943-49626ae27751?q=80&w=1992&auto=format&fit=crop" alt="قارورة عصير عائلي">
+                        <div class="menu-item-content">
+                            <h4>قارورة عصير طازج (1 لتر)</h4>
+                            <p class="description">الحجم المثالي للمشاركة مع العائلة والأصدقاء.</p>
+                            <p class="price">1500 ريال</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>من نحن</h2>
+                <p>كافتيريا الخير هي وجهتكم الأولى للاستمتاع بأجود أنواع العصائر الطازجة والسندويتشات الشهية في قلب مدينة تعز. نحرص على استخدام أفضل المكونات لنقدم لكم تجربة لا تُنسى.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>تواصل معنا</h3>
+            <p><strong>العنوان:</strong> اليمن، تعز، دمنة خدير، الكمب، أمام الملك فون وجوار صيدلية العفيفي.</p>
+            <p><strong>أوقات الدوام:</strong> 24 ساعة</p>
+            <p><strong>للتواصل والطلبات:</strong> <a href="tel:+967730528609">+967 730 528 609</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // This script is not needed for the new design, but kept for compatibility
+        console.log("مرحبًا بك في موقع كافتيريا الخير");
+    </script>
+
+</body>
+</html>

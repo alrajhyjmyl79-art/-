@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كافتيريا الخير | العصائر الفاخرة والسندوتشات الراقية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-green: #1B5E20;
+            --light-green: #4CAF50;
+            --cream: #FFF8E1;
+            --dark: #2C3E50;
+            --light: #F5F5F5;
+            --red: #C62828;
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        .luxury-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Luxury Header */
+        .luxury-header {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #0D3C0D 100%);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .luxury-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .logo-text h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--gold), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .luxury-nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .luxury-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .luxury-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .luxury-nav a:hover {
+            color: var(--gold);
+        }
+        
+        .luxury-nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* Luxury Hero */
+        .luxury-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)),
+                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 200px 0 150px;
+            margin-top: 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-tagline {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .luxury-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--gold);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin: 10px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        /* Luxury Features */
+        .luxury-features {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--light-green));
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+        
+        /* Luxury Menu */
+        .luxury-menu {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-tab {
+            background: white;
+            border: 2px solid var(--dark-green);
+            color: var(--dark-green);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-tab.active,
+        .menu-tab:hover {
+            background: var(--dark-green);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-15px);
+        }
+        
+        .item-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--red);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 2;
+        }
+        
+        .item-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .item-image {
+            transform: scale(1.05);
+        }
+        
+        .item-content {
+            padding: 30px;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .item-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        
+        .item-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--red);
+        }
+        
+        /* Luxury Pricing */
+        .luxury-pricing {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--cream) 0%, #f9f3e9 100%);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid var(--gold);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:before {
+            content: 'الأفضل';
+            position: absolute;
+            top: 20px;
+            left: -35px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 10px 40px;
+            transform: rotate(-45deg);
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        
+        .price-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark-green);
+            margin: 30px 0;
+        }
+        
+        .price-number:before {
+            content: 'ريال';
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-left: 5px;
+        }
+        
+        /* Luxury Contact */
+        .luxury-contact {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #0D3C0D 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            border: 2px solid var(--gold);
+        }
+        
+        .whatsapp-card {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .whatsapp-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        
+        /* Luxury Footer */
+        .luxury-footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2C3E50 100%);
+            color: white;
+            padding: 80px 0 30px;
+            border-top: 5px solid var(--gold);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .luxury-nav { display: none; }
+            .hero-content h1 { font-size: 3rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Luxury Header -->
+    <header class="luxury-header">
+        <div class="luxury-container header-content">
+            <div class="luxury-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>كافتيريا الخير</h1>
+                    <p>الفخامة في كل قطرة وكل لقمة</p>
+                </div>
+            </div>
+            <nav class="luxury-nav">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#about"><i class="fas fa-star"></i> لماذا نحن</a></li>
+                    <li><a href="#menu"><i class="fas fa-utensils"></i> قائمتنا</a></li>
+                    <li><a href="#pricing"><i class="fas fa-tags"></i> الأسعار</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Luxury Hero -->
+    <section class="luxury-hero" id="home">
+        <div class="luxury-container hero-content">
+            <h1>فخامة الطعم، روعة الإحساس</h1>
+            <p class="hero-tagline">
+                في كافتيريا الخير، نقدم لكم تجربة فاخرة مع عصائرنا الطازجة المعدة يومياً 
+                وسندوتشاتنا الراقية المحضرة بأجود المكونات العالمية
+            </p>
+            <div class="luxury-badge">
+                <i class="fas fa-award"></i>
+                <span>الجودة الفائقة منذ 2010</span>
+            </div>
+            <div class="luxury-badge">
+                <i class="fas fa-clock"></i>
+                <span>خدمة 24 ساعة يومياً</span>
+            </div>
+            <div class="luxury-badge">
+                <i class="fas fa-truck"></i>
+                <span>توصيل فاخر وسريع</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Features -->
+    <section class="luxury-features" id="about">
+        <div class="luxury-container">
+            <div class="section-header">
+                <h2>لماذا نحن الأفضل؟</h2>
+                <p>تميزنا يكمن في التفاصيل الدقيقة</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3>عصائر فاخرة</h3>
+                    <p>عصائر طازجة 100% معدة من أفضل أنواع الفواكه العالمية، بدون أي إضافات صناعية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cheese"></i>
+                    </div>
+                    <h3>سندوتشات راقية</h3>
+                    <p>سندوتشات محضرة بخبرة مع أجود أنواع اللحوم والأجبان والخبز الطازج</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>توصيل مميز</h3>
+                    <p>توصيل سريع وعناية فائقة بطلباتكم مع تغليف فاخر يحافظ على جودة المنتج</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Menu -->
+    <section class="luxury-menu" id="menu">
+        <div class="luxury-container">
+            <div class="section-header">
+                <h2>قائمتنا الفاخرة</h2>
+                <p>اختر من بين تشكيلتنا الراقية</p>
+            </div>
+            
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="all">
+                    <i class="fas fa-th-large"></i> كل المنتجات
+                </button>
+                <button class="menu-tab" data-category="juices">
+                    <i class="fas fa-glass-whiskey"></i> العصائر الفاخرة
+                </button>
+                <button class="menu-tab" data-category="sandwiches">
+                    <i class="fas fa-hamburger"></i> السندوتشات الراقية
+                </button>
+                <button class="menu-tab" data-category="special">
+                    <i class="fas fa-crown"></i> المميزات الخاصة
+                </button>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- العصائر -->
+                <div class="menu-item" data-category="juices">
+                    <div class="item-badge">الأكثر طلباً</div>
+                    <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="عصير برتقال فاخر">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">عصير برتقال فاخر</h3>
+                            <span class="item-price">15 ريال</span>
+                        </div>
+                        <p>عصير برتقال طازج معصور أمامك من أجود أنواع البرتقال العالمي، غني بفيتامين سي</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="juices">
+                    <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="عصير فراولة رويال">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">عصير فراولة رويال</h3>
+                            <span class="item-price">18 ريال</span>
+                        </div>
+                        <p>مزيج من الفراولة الطازجة مع الحليب الطازج وقليل من العسل الطبيعي</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="juices">
+                    <div class="item-badge">جديد</div>
+                    <img src="https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="عصير أناناس تروبيكال">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">عصير أناناس تروبيكال</h3>
+                            <span class="item-price">20 ريال</span>
+                        </div>
+                        <p>عصير أناناس طازج مع إضافة قليل من النعناع الطازج للانتعاش</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="juices">
+                    <img src="https://images.unsplash.com/photo-1628992791425-6c3c73fcf5f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="عصير جوافة مميز">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">عصير جوافة مميز</h3>
+                            <span class="item-price">22 ريال</span>
+                        </div>
+                        <p>عصير جوافة طبيعي غني بالفيتامينات والمعادن</p>
+                    </div>
+                </div>
+                
+                <!-- السندوتشات -->
+                <div class="menu-item" data-category="sandwiches">
+                    <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="سندويش دجاج مشوي">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">سندويش دجاج مشوي</h3>
+                            <span class="item-price">22 ريال</span>
+                        </div>
+                        <p>صدر دجاج مشوي طازج مع الخضار الطازجة والصلصة الخاصة والمايونيز</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="sandwiches">
+                    <div class="item-badge">مميز</div>
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206bde3ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="سندويش ستيك لحم">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">سندويش ستيك لحم</h3>
+                            <span class="item-price">25 ريال</span>
+                        </div>
+                        <p>شرائح ستيك لحم مشوية مع الفطر الطازج والجبنة الذائبة</p>
+                    </div>
+                </div>
+                
+                <!-- المميزات -->
+                <div class="menu-item" data-category="special">
+                    <div class="item-badge">حصري</div>
+                    <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="بوفيه فطور كامل">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">بوفيه فطور كامل</h3>
+                            <span class="item-price">30 ريال</span>
+                        </div>
+                        <p>بيض طازج، فول مدمس، جبنة، زيتون، طماطم، خيار، وفلافل طازجة</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" class="item-image" alt="فول بالزبدة الملكي">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-title">فول بالزبدة الملكي</h3>
+                            <span class="item-price">12 ريال</span>
+                        </div>
+                        <p>فول مدمس مع زبدة وطماطم وبصل وزيت زيتون وليمون</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Pricing -->
+    <section class="luxury-pricing" id="pricing">
+        <div class="luxury-container">
+            <div class="section-header">
+                <h2>باقاتنا الفاخرة</h2>
+                <p>اختر الباقة التي تناسب ذوقك الرفيع</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الباقة الذهبية الصغيرة</h3>
+                    <div class="price-number">250</div>
+                    <p>قلص صغير - الحجم المثالي للاستمتاع الفردي</p>
+                    <ul style="list-style: none; padding: 30px 0; text-align: right;">
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> عصير طازج 100%</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> حجم 250 مل</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> جميع النكهات الفاخرة</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>الباقة الماسية</h3>
+                    <div class="price-number">500</div>
+                    <p>قلص كبير - الأكثر طلباً من العملاء المميزين</p>
+                    <ul style="list-style: none; padding: 30px 0; text-align: right;">
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> عصير طازج مركز</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> حجم 500 مل</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> جميع النكهات الفاخرة</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> يناسب 2-3 أشخاص</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>الباقة البلاتينية</h3>
+                    <div class="price-number">1000</div>
+                    <p>قارورة كبيرة - للذواقة والمتخصصين</p>
+                    <ul style="list-style: none; padding: 30px 0; text-align: right;">
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> عصير مركز وجاهز</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> حجم 1.5 لتر</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> يناسب المناسبات الراقية</li>
+                        <li style="padding: 10px 0;"><i class="fas fa-check" style="color: var(--light-green); margin-left: 10px;"></i> خدمة تغليف فاخر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, var(--dark-green), var(--light-green)); color: white; padding: 40px; border-radius: 25px; margin-top: 60px; text-align: center; box-shadow: var(--shadow-lg);">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;"><i class="fas fa-gem"></i> عروض خاصة للمناسبات</h3>
+                <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-top: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold);">200 ريال</div>
+                        <p>سعر اليم القلص</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold);">300 ريال</div>
+                        <p>سعر اليم القارورة</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold);">500 ريال</div>
+                        <p>القارورة الصغيرة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Contact -->
+    <section class="luxury-contact" id="contact">
+        <div class="luxury-container">
+            <div class="section-header">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا لخدمتكم على مدار الساعة</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="font-size: 2rem; margin-bottom: 30px; color: var(--gold);">معلومات الاتصال</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>العنوان الفاخر</h4>
+                            <p style="font-size: 1.2rem; margin-top: 5px;"><strong>اليمن - تعز - دمنة خدير الكمب</strong></p>
+                            <p>أمام الملك فون - وجوار صيدلية العفيفي</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>هاتف الرفاهية</h4>
+                            <p style="font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-top: 5px;">+967 730 528 609</p>
+                            <p>اتصل بنا على مدار 24 ساعة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>ساعات العمل</h4>
+                            <p style="font-size: 1.3rem; font-weight: 700; margin-top: 5px;">24 ساعة يومياً</p>
+                            <p>نستقبل طلباتكم الفاخرة على مدار الساعة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="whatsapp-card">
+                        <h4><i class="fab fa-whatsapp"></i> خدمة الطلبات الفاخرة عبر واتساب</h4>
+                        <p>اطلب منتجاتك الفاخرة بضغطة واحدة</p>
+                        <a href="https://wa.me/967730528609?text=مرحباً%20أود%20الطلب%20من%20كافتيريا%20الخير%20الفاخرة" target="_blank">
+                            <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+                            اضغط للطلب عبر واتساب
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="background: var(--cream); padding: 50px 40px; border-radius: 25px; box-shadow: var(--shadow-lg);">
+                    <h3 style="font-size: 2rem; color: var(--dark-green); margin-bottom: 30px;"><i class="fas fa-concierge-bell"></i> طلب خاص</h3>
+                    <form id="luxuryForm" style="display: grid; gap: 25px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">الاسم الكامل</label>
+                            <input type="text" style="width: 100%; padding: 18px 20px; border: 2px solid rgba(27, 94, 32, 0.1); border-radius: 15px; font-family: 'Tajawal'; font-size: 1.1rem; transition: var(--transition);" 
+                                   placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">رقم الهاتف</label>
+                            <input type="tel" style="width: 100%; padding: 18px 20px; border: 2px solid rgba(27, 94, 32, 0.1); border-radius: 15px; font-family: 'Tajawal'; font-size: 1.1rem;" 
+                                   placeholder="+967 __________" required>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--dark);">الطلب الخاص</label>
+                            <textarea rows="5" style="width: 100%; padding: 18px 20px; border: 2px solid rgba(27, 94, 32, 0.1); border-radius: 15px; font-family: 'Tajawal'; font-size: 1.1rem;" 
+                                      placeholder="اكتب طلبك الخاص هنا..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" style="background: linear-gradient(135deg, var(--dark-green), var(--light-green)); color: white; border: none; padding: 20px; border-radius: 15px; font-weight: 700; font-size: 1.2rem; cursor: pointer; transition: var(--transition);">
+                            <i class="fas fa-paper-plane"></i> إرسال الطلب الفاخر
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Footer -->
+    <footer class="luxury-footer">
+        <div class="luxury-container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--gold); margin-bottom: 20px;"><i class="fas fa-crown"></i> كافتيريا الخير</h3>
+                    <p>أجود العصائر الفاخرة وأشهى السندوتشات الراقية في اليمن. نحن نؤمن بأن الرفاهية تبدأ من التفاصيل الدقيقة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/967730528609" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-snapchat-ghost"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="font-size: 1.3rem; color: var(--gold); margin-bottom: 20px;">روابط فاخرة</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px;"><a href="#home" style="color: white; text-decoration: none; transition: var(--transition);"><i class="fas fa-chevron-left" style="margin-left: 10px;"></i> الصفحة الرئيسية</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#menu" style="color: white; text-decoration: none; transition: var(--transition);"><i class="fas fa-chevron-left" style="margin-left: 10px;"></i> قائمتنا الفاخرة</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#pricing" style="color: white; text-decoration: none; transition: var(--transition);"><i class="fas fa-chevron-left" style="margin-left: 10px;"></i> باقاتنا المميزة</a></li>
+                        <li style="margin-bottom: 15px;"><a href="#contact" style="color: white; text-decoration: none; transition: var(--transition);"><i class="fas fa-chevron-left" style="margin-left: 10px;"></i> تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="font-size: 1.3rem; color: var(--gold); margin-bottom: 20px;">معلومات الاتصال</h4>
+                    <p style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="color: var(--gold); margin-left: 10px;"></i> اليمن - تعز - دمنة خدير الكمب</p>
+                    <p style="margin-bottom: 15px;"><i class="fas fa-phone" style="color: var(--gold); margin-left: 10px;"></i> +967 730 528 609</p>
+                    <p style="margin-bottom: 15px;"><i class="fas fa-clock" style="color: var(--gold); margin-left: 10px;"></i> 24 ساعة يومياً</p>
+                    <p style="margin-bottom: 15px;"><i class="fas fa-car" style="color: var(--gold); margin-left: 10px;"></i> توصيل فاخر وسريع</p>
+                </div>
+                
+                <div>
+                    <h4 style="font-size: 1.3rem; color: var(--gold); margin-bottom: 20px;">ساعات الذروة</h4>
+                    <p style="margin-bottom: 10px;"><strong>الصباح:</strong> 8 ص - 11 ص</p>
+                    <p style="margin-bottom: 10px;"><strong>الظهر:</strong> 1 ظ - 3 ظ</p>
+                    <p style="margin-bottom: 10px;"><strong>المساء:</strong> 7 م - 11 م</p>
+                    <p style="margin-bottom: 10px;"><strong>الليل:</strong> 12 ص - 5 ص</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 40px;">
+                <p style="font-size: 0.9rem; opacity: 0.8;">© 2023 كافتيريا الخير الفاخرة. جميع الحقوق محفوظة. | تصميم وتطوير بمعايير الرفاهية العالمية</p>
+                <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">العنوان: اليمن - تعز - دمنة خدير الكمب - أمام الملك فون - جوار صيدلية العفيفي</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تفعيل قائمة المنتجات
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // تفعيل نموذج الاتصال
+        document.getElementById('luxuryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            const whatsappMessage = `طلب فاخر من كافتيريا الخير:
+            
+الاسم: ${name}
+الهاتف: ${phone}
+الطلب: ${message}
+
+أتمنى معالجة طلبي بأسرع وقت ممكن.`;
+            
+            window.open(`https://wa.me/967730528609?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+        });
+        
+        // تأثير التمرير السلس
+        document.querySelectorAll('.luxury-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تأثير ظهور العناصر عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // تطبيق التأثير على العناصر
+        document.querySelectorAll('.feature-card, .menu-item, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

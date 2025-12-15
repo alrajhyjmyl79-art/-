@@ -1,10 +1,10 @@
 {
-  "name": "كافتيريا الخير - تطبيق عالمي",
+  "name": "كافتيريا الخير 🏆",
   "short_name": "كافتيريا الخير",
-  "description": "تطبيق عصائر طازجة وسندوتشات مميزة، خدمة 24 ساعة، دفع إلكتروني آمن",
+  "description": "أفضل تطبيق كافتيريا في العالم - عصائر طازجة، سندوتشات مميزة، خدمة 24 ساعة",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a2e",
+  "background_color": "#0a0a14",
   "theme_color": "#FFD700",
   "orientation": "portrait",
   "icons": [
@@ -19,35 +19,66 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop",
+      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop&q=80",
       "sizes": "800x1280",
       "type": "image/jpeg",
-      "form_factor": "narrow"
+      "form_factor": "narrow",
+      "label": "واجهة التطبيق الرئيسية"
     }
   ],
-  "categories": ["food", "shopping", "lifestyle"],
+  "categories": ["food", "shopping", "lifestyle", "utilities"],
   "shortcuts": [
     {
-      "name": "طلب سريع",
+      "name": "🚀 طلب سريع",
       "short_name": "طلب",
       "description": "طلب عصائر أو سندوتشات",
-      "url": "/?quick-order"
+      "url": "/?quick-order",
+      "icons": [
+        {
+          "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
-      "name": "العصائر",
+      "name": "🍹 العصائر",
       "short_name": "عصائر",
       "description": "تصفح العصائر الطازجة",
-      "url": "/#juices"
+      "url": "/#juices",
+      "icons": [
+        {
+          "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
-      "name": "تواصل معنا",
-      "short_name": "اتصل",
-      "description": "اتصل أو راسلنا",
-      "url": "/?contact"
+      "name": "👑 لوحة التحكم",
+      "short_name": "إدارة",
+      "description": "لوحة إدارة التطبيق",
+      "url": "/?admin",
+      "icons": [
+        {
+          "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+          "sizes": "96x96"
+        }
+      ]
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "scope": "/",
+  "lang": "ar",
+  "dir": "rtl",
+  "display_override": ["standalone", "minimal-ui"]
 }

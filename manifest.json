@@ -1,12 +1,12 @@
 {
-  "name": "كافتيريا الخير - عصائر طازجة",
+  "name": "كافتيريا الخير - تطبيق عالمي",
   "short_name": "كافتيريا الخير",
-  "description":" عصائر طازجة تُعصر أمامك، سندوتشات مميزة، خدمة 24 ساعة، دفع عبر كريمي حاسب ",
+  "description": "تطبيق عصائر طازجة وسندوتشات مميزة، خدمة 24 ساعة، دفع إلكتروني آمن",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a2e",
-  "theme_color": "#6F4E37",
-  "orientation": "portrait-primary",
+  "theme_color": "#FFD700",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
@@ -23,7 +23,7 @@
   ],
   "screenshots": [
     {
-      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop&q=80",
+      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop",
       "sizes": "800x1280",
       "type": "image/jpeg",
       "form_factor": "narrow"
@@ -32,24 +32,22 @@
   "categories": ["food", "shopping", "lifestyle"],
   "shortcuts": [
     {
-      "name": "عرض العصائر",
+      "name": "طلب سريع",
+      "short_name": "طلب",
+      "description": "طلب عصائر أو سندوتشات",
+      "url": "/?quick-order"
+    },
+    {
+      "name": "العصائر",
       "short_name": "عصائر",
-      "description": "عرض جميع العصائر الطازجة",
+      "description": "تصفح العصائر الطازجة",
       "url": "/#juices"
     },
     {
-      "name": "طلباتي",
-      "short_name": "طلبات",
-      "description": "عرض الطلبات السابقة",
-      "url": "/#orders"
-    },
-    {
-      "name": "اتصل بنا",
+      "name": "تواصل معنا",
       "short_name": "اتصل",
-      "description": "الاتصال السريع",
-      "url": "tel:+967730528609"
+      "description": "اتصل أو راسلنا",
+      "url": "/?contact"
     }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 }

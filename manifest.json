@@ -1,74 +1,55 @@
 {
-  "name": "كافتيريا الخير",
+  "name": "كافتيريا الخير - عصائر طازجة",
   "short_name": "كافتيريا الخير",
-  "description": "متجر الكافتيريا الإلكتروني - أجود العصائر والسندوتشات - مفتوح 24 ساعة",
+  "description":" عصائر طازجة تُعصر أمامك، سندوتشات مميزة، خدمة 24 ساعة، دفع عبر كريمي حاسب ",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#2c3e50",
-  "theme_color": "#c28a5c",
-  "orientation": "portrait",
+  "background_color": "#1a1a2e",
+  "theme_color": "#6F4E37",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
-      "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop",
+      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop&q=80",
       "sizes": "800x1280",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "form_factor": "narrow"
     }
   ],
-  "categories": ["food", "shopping"],
+  "categories": ["food", "shopping", "lifestyle"],
   "shortcuts": [
     {
-      "name": "عرض القائمة",
-      "short_name": "القائمة",
-      "description": "عرض جميع المنتجات",
-      "url": "/#products"
+      "name": "عرض العصائر",
+      "short_name": "عصائر",
+      "description": "عرض جميع العصائر الطازجة",
+      "url": "/#juices"
+    },
+    {
+      "name": "طلباتي",
+      "short_name": "طلبات",
+      "description": "عرض الطلبات السابقة",
+      "url": "/#orders"
     },
     {
       "name": "اتصل بنا",
       "short_name": "اتصل",
-      "description": "اتصال سريع",
+      "description": "الاتصال السريع",
       "url": "tel:+967730528609"
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

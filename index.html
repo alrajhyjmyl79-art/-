@@ -3,216 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كافتيريا الخير - متجر الكتروني</title>
+    <title>كافتيريا الخير - متجر الكتروني متطور</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3082/3082383.png">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3082/3082383.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c28a5c;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --green: #27ae60;
+            --gold: #FFD700;
+            --coffee: #6F4E37;
+            --fresh: #27ae60;
+            --juice: #FF6B6B;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
         }
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
-            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif; 
+            font-family: 'Cairo', sans-serif; 
         }
         body { 
-            background: #f8f9fa; 
-            color: #2c3e50; 
-            max-width: 100%; 
-            overflow-x: hidden; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            overflow-x: hidden;
         }
         
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        /* Header with Video Background */
+        .hero-header {
+            height: 60vh;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(111, 78, 55, 0.8));
             position: relative;
             overflow: hidden;
         }
-        .header::before {
-            content: '';
+        .video-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://cdn-icons-png.flaticon.com/512/3082/3082383.png') center/100px no-repeat;
-            opacity: 0.1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .logo { 
-            font-size: 2.2em; 
-            margin-bottom: 10px; 
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
+            font-size: 3em; 
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .logo i { 
-            color: #f1c40f; 
-            margin-left: 10px; 
+            color: var(--gold);
+            animation: rotate 20s linear infinite;
         }
-        .tagline { 
-            opacity: 0.9; 
-            font-size: 1.1em; 
-            position: relative;
-            z-index: 1;
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        .hours {
-            background: rgba(255,255,255,0.2);
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        .live-indicator {
             display: inline-block;
+            background: var(--fresh);
             padding: 8px 20px;
-            border-radius: 20px;
+            border-radius: 25px;
+            animation: pulse 2s infinite;
             margin-top: 10px;
-            font-size: 0.9em;
-            position: relative;
-            z-index: 1;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(39, 174, 96, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
         }
         
-        /* Navigation */
-        .categories {
-            display: flex;
-            overflow-x: auto;
+        /* Video Gallery */
+        .video-gallery {
+            padding: 30px;
             background: white;
-            padding: 18px 15px;
-            gap: 12px;
-            border-bottom: 2px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            scrollbar-width: none;
+            margin: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .categories::-webkit-scrollbar { display: none; }
-        .category-btn {
-            padding: 12px 24px;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 30px;
-            white-space: nowrap;
-            font-weight: 700;
-            font-size: 0.95em;
-            color: #555;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 120px;
-            text-align: center;
-        }
-        .category-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-        .category-btn.active {
-            background: linear-gradient(135deg, var(--primary), #d35400);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(194, 138, 92, 0.3);
-        }
-        .category-btn i { margin-left: 8px; }
-        
-        /* Products Grid */
-        .products-grid {
+        .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .video-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .video-item video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .video-item:hover video {
+            transform: scale(1.05);
+        }
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 15px;
+        }
+        
+        /* Product Cards with Juice Images */
+        .products-section {
+            padding: 40px 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
-        @media (max-width: 768px) {
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-        }
-        @media (max-width: 480px) {
-            .products-grid { grid-template-columns: 1fr; padding: 15px; }
-        }
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #f0f0f0;
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--coffee);
+            margin-bottom: 40px;
             position: relative;
         }
-        .product-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+            margin: 10px auto;
+            border-radius: 2px;
         }
-        .product-card.featured::after {
+        
+        .juice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .juice-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 2px solid transparent;
+        }
+        .juice-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-color: var(--gold);
+        }
+        .juice-card.premium::before {
             content: '⭐ مميز';
             position: absolute;
             top: 15px;
             left: 15px;
-            background: #ff6b6b;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 20px;
             font-weight: bold;
             z-index: 2;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
-        .product-img {
-            height: 200px;
-            background: linear-gradient(45deg, #3498db, #9b59b6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4em;
+        .juice-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
         }
-        .product-img::after {
+        .juice-image::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.1));
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.1));
         }
-        .product-info { 
-            padding: 25px; 
-            position: relative;
+        .juice-info {
+            padding: 25px;
         }
-        .product-title { 
-            font-size: 1.4em; 
-            margin-bottom: 12px; 
-            color: var(--secondary); 
+        .juice-name {
+            font-size: 1.6em;
+            color: var(--dark);
+            margin-bottom: 10px;
             font-weight: 700;
-            line-height: 1.3;
         }
-        .product-desc { 
-            color: #666; 
-            margin-bottom: 20px; 
-            font-size: 0.95em; 
+        .juice-desc {
+            color: #666;
+            margin-bottom: 20px;
             line-height: 1.6;
             min-height: 60px;
         }
-        .product-price { 
-            color: var(--accent); 
-            font-size: 1.6em; 
+        .juice-price {
+            font-size: 2em;
+            color: var(--juice);
             font-weight: 800;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .product-price::before {
+        .juice-price::before {
             content: '💵 ';
-            font-size: 0.9em;
+            font-size: 0.8em;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--coffee);
+            background: white;
+            color: var(--coffee);
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .qty-btn:hover {
+            background: var(--coffee);
+            color: white;
+        }
+        .quantity {
+            font-size: 1.3em;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
         }
         .add-to-cart {
-            background: linear-gradient(to right, var(--primary), #e67e22);
+            background: linear-gradient(135deg, var(--fresh), #2ecc71);
             color: white;
             border: none;
-            padding: 15px 25px;
+            padding: 15px;
             width: 100%;
-            border-radius: 12px;
+            border-radius: 15px;
             font-size: 1.1em;
             font-weight: 700;
             cursor: pointer;
@@ -221,107 +268,41 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            letter-spacing: 0.5px;
         }
-        .add-to-cart:hover { 
-            background: linear-gradient(to right, #a56c44, #d35400); 
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #219653, #27ae60);
             transform: scale(1.02);
         }
         .add-to-cart.added {
-            background: linear-gradient(to right, var(--green), #2ecc71);
-        }
-        .add-to-cart.added::before {
-            content: '✓ ';
+            background: linear-gradient(135deg, var(--gold), #FFA500);
         }
         
-        /* Cart Button */
-        .cart-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--accent), #ff4757);
-            color: white;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
-            z-index: 1000;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 3px solid white;
-        }
-        .cart-btn:hover { 
-            transform: scale(1.1) rotate(10deg); 
-            box-shadow: 0 12px 30px rgba(231, 76, 60, 0.6);
-        }
-        .cart-btn span {
-            font-size: 0.5em;
-            margin-top: 3px;
-            font-weight: bold;
-        }
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--secondary);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            font-size: 0.8em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border: 2px solid white;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Order Modal */
-        .order-modal {
-            display: none;
+        /* Advanced Cart */
+        .cart-container {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .modal-content {
+            right: -400px;
+            width: 380px;
+            height: 100vh;
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 80vh;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 10000;
+            transition: right 0.4s;
+            padding: 25px;
             overflow-y: auto;
-            animation: slideIn 0.3s;
         }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .cart-container.open {
+            right: 0;
         }
-        .modal-header {
+        .cart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
         }
-        .close-modal {
+        .close-cart {
             background: #eee;
             border: none;
             width: 40px;
@@ -331,495 +312,699 @@
             cursor: pointer;
         }
         
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, var(--secondary), #1a2530);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 50px;
-            position: relative;
-            overflow: hidden;
+        /* Payment Methods */
+        .payment-methods {
+            background: white;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-        .contact-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 30px 0;
-            position: relative;
-            z-index: 1;
-        }
-        .contact-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 18px 35px;
-            border-radius: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 600;
-            transition: all 0.3s;
-            min-width: 220px;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-        }
-        .contact-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-        }
-        .contact-btn.call {
-            background: linear-gradient(135deg, #4285F4, #0d47a1);
-            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3);
-        }
-        .contact-btn.map {
-            background: linear-gradient(135deg, #FF9800, #EF6C00);
-            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
-        }
-        .address {
-            background: rgba(255,255,255,0.1);
+        .payment-option {
+            background: #f8f9fa;
             padding: 20px;
             border-radius: 15px;
-            margin: 25px auto;
-            max-width: 600px;
-            font-size: 1.1em;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 20px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .address i {
-            color: #f1c40f;
-            margin-left: 10px;
+        .payment-option.selected {
+            border-color: var(--fresh);
+            background: #e8f6ef;
+        }
+        .payment-option:hover {
+            transform: translateX(10px);
+        }
+        .creamy-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
         }
         
-        /* Loading Animation */
-        .loader {
-            display: none;
+        /* Admin Panel */
+        .admin-panel {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255,255,255,0.95);
-            z-index: 3000;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+        .admin-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+        .admin-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Footer with Map */
+        .footer {
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            color: white;
+            padding: 50px 20px;
+            margin-top: 50px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: 300px;
+        }
+        .contact-info {
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+        }
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            gap: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
         }
-        .spinner {
-            width: 70px;
-            height: 70px;
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .juice-grid { grid-template-columns: 1fr; }
+            .cart-container { width: 100%; right: -100%; }
+            .hero-header { height: 50vh; }
+            .logo { font-size: 2.2em; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading -->
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
-        <h3>جاري تحميل المتجر...</h3>
+    <!-- Admin Panel Access -->
+    <div class="admin-panel">
+        <button class="admin-btn" onclick="openAdminPanel()">
+            <i class="fas fa-cog"></i> لوحة التحكم
+        </button>
     </div>
 
-    <!-- Header -->
-    <div class="header">
-        <div class="logo"><i class="fas fa-coffee"></i> كافتيريا الخير</div>
-        <p class="tagline">أجود العصائر الطازجة • سندوتشات مميزة • وجبات خفيفة</p>
-        <div class="hours">🕒 مفتوح 24 ساعة</div>
+    <!-- Header with Video Background -->
+    <div class="hero-header">
+        <video autoplay muted loop class="video-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-orange-juice-being-served-in-a-glass-2399-large.mp4" type="video/mp4">
+        </video>
+        <div class="header-content">
+            <div class="logo floating">
+                <i class="fas fa-wine-glass-alt"></i> كافتيريا الخير
+            </div>
+            <p class="tagline">عصائر طازجة تُعصر أمامك • سندوتشات مميزة • خدمة 24 ساعة</p>
+            <div class="live-indicator">
+                <i class="fas fa-circle"></i> الآن مفتوح • خدمة التوصيل متاحة
+            </div>
+        </div>
     </div>
-    
-    <!-- Categories -->
-    <div class="categories">
-        <button class="category-btn active" onclick="filterCategory('all')">
-            <i class="fas fa-th-large"></i> الكل
-        </button>
-        <button class="category-btn" onclick="filterCategory('juice')">
-            <i class="fas fa-glass-whiskey"></i> العصائر
-        </button>
-        <button class="category-btn" onclick="filterCategory('sandwich')">
-            <i class="fas fa-hamburger"></i> السندوتشات
-        </button>
-        <button class="category-btn" onclick="filterCategory('snack')">
-            <i class="fas fa-cookie-bite"></i> الوجبات الخفيفة
-        </button>
-        <button class="category-btn" onclick="filterCategory('hot')">
-            <i class="fas fa-mug-hot"></i> المشروبات الساخنة
-        </button>
-        <button class="category-btn" onclick="filterCategory('dessert')">
-            <i class="fas fa-ice-cream"></i> الحلويات
-        </button>
+
+    <!-- Video Gallery Section -->
+    <div class="video-gallery">
+        <h2 class="section-title">📹 عصائرنا تُعصر أمامك</h2>
+        <div class="video-grid">
+            <div class="video-item" onclick="playVideo(this)">
+                <video muted loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-pouring-orange-juice-into-a-glass-2398-large.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <h3>عصير برتقال طازج</h3>
+                    <p>يُعصر أمامك مباشرة</p>
+                </div>
+            </div>
+            <div class="video-item" onclick="playVideo(this)">
+                <video muted loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-fresh-strawberry-juice-in-a-glass-2403-large.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <h3>عصير فراولة</h3>
+                    <p>من أفضل أنواع الفراولة</p>
+                </div>
+            </div>
+            <div class="video-item" onclick="playVideo(this)">
+                <video muted loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-mango-juice-in-a-glass-2401-large.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <h3>عصير مانجو</h3>
+                    <p>مانجو استوائي طازج</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <!-- Products -->
-    <div class="products-grid" id="products-container">
-        <!-- المنتجات تُضاف تلقائياً -->
+
+    <!-- Products Section -->
+    <div class="products-section">
+        <h2 class="section-title">🍹 عصائرنا الطازجة</h2>
+        <div class="juice-grid" id="products-container">
+            <!-- Products will be loaded here -->
+        </div>
     </div>
-    
+
+    <!-- Payment Methods -->
+    <div class="payment-methods">
+        <h2 class="section-title">💳 طرق الدفع المتاحة</h2>
+        <div class="payment-option selected" onclick="selectPayment('creamy')">
+            <div class="creamy-badge">كريمي باي</div>
+            <h3>الدفع عبر كريمي باي</h3>
+            <p>رقم الحساب: <strong>1299834</strong></p>
+            <p>الدفع الآمن السريع</p>
+        </div>
+        <div class="payment-option" onclick="selectPayment('cash')">
+            <h3>💵 الدفع نقداً عند الاستلام</h3>
+            <p>الدفع عند استلام الطلب</p>
+        </div>
+        <div class="payment-option" onclick="selectPayment('vodafone')">
+            <h3>📱 فودافون كاش</h3>
+            <p>الدفع عبر محفظة فودافون</p>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-container" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> سلة المشتريات</h2>
+            <button class="close-cart" onclick="closeCart()">×</button>
+        </div>
+        <div id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
+            <h3>الإجمالي: <span id="cartTotal">0</span> ر.ي</h3>
+            <button class="add-to-cart" style="margin-top: 20px;" onclick="checkout()">
+                <i class="fas fa-lock"></i> اتمام الطلب والدفع
+            </button>
+        </div>
+    </div>
+
     <!-- Cart Button -->
-    <div class="cart-btn" onclick="showOrderModal()">
+    <div class="cart-btn" onclick="openCart()" id="cartButton">
         <i class="fas fa-shopping-cart"></i>
-        <span>السلة</span>
-        <div class="cart-count" id="cart-count">0</div>
+        <div class="cart-count" id="cartCount">0</div>
     </div>
-    
-    <!-- Order Modal -->
-    <div class="order-modal" id="orderModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>🛒 سلة المشتريات</h2>
-                <button class="close-modal" onclick="closeOrderModal()">×</button>
-            </div>
-            <div id="cart-items">
-                <!-- محتويات السلة -->
-            </div>
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
-                <h3>💰 الإجمالي: <span id="cart-total">0</span> ر.ي</h3>
-                <button class="add-to-cart" style="margin-top: 20px;" onclick="sendOrder()">
-                    <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Footer -->
+
+    <!-- Footer with Map -->
     <div class="footer">
-        <h2 style="position: relative; z-index: 1;">تواصل معنا للطلب</h2>
-        <p style="opacity: 0.9; position: relative; z-index: 1; margin: 15px 0 30px;">نحن هنا لخدمتك على مدار الساعة</p>
-        
-        <div class="contact-buttons">
-            <a href="https://wa.me/967730528609?text=" class="contact-btn" target="_blank" id="whatsappBtn">
-                <i class="fab fa-whatsapp"></i> طلب عبر واتساب
-            </a>
-            <a href="tel:+967730528609" class="contact-btn call">
-                <i class="fas fa-phone-alt"></i> اتصل بنا
-            </a>
-            <a href="https://maps.google.com/?q=اليمن تعز دمنة خدير الكمب أمام الملك فون" class="contact-btn map" target="_blank">
-                <i class="fas fa-map-marker-alt"></i> موقع الكافتيريا
-            </a>
+        <div class="contact-grid">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.1234567890123!2d44.12345678901234!3d13.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA3JzI0LjQiTiA0NMKwMDcnMjQuNCJF!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="contact-info">
+                <h2>📍 موقعنا</h2>
+                <p>اليمن – تعز – دمنة خدير – الكمب – أمام الملك فون</p>
+                <p>جوار صيدلية العفيفي</p>
+                
+                <h2 style="margin-top: 30px;">📞 تواصل معنا</h2>
+                <p><i class="fas fa-phone"></i> <strong>+967 730 528 609</strong></p>
+                <p><i class="fas fa-clock"></i> مفتوح 24 ساعة</p>
+                
+                <a href="https://wa.me/967730528609?text=مرحباً، أريد الطلب من كافتيريا الخير" 
+                   class="whatsapp-btn" 
+                   target="_blank">
+                    <i class="fab fa-whatsapp"></i> طلب عبر واتساب
+                </a>
+            </div>
         </div>
-        
-        <div class="address">
-            <p><i class="fas fa-map-pin"></i> <strong>العنوان:</strong> اليمن – تعز – دمنة خدير – الكمب – أمام الملك فون</p>
-            <p><i class="fas fa-phone"></i> <strong>الهاتف:</strong> +967 730 528 609</p>
-            <p><i class="fas fa-clock"></i> <strong>ساعات العمل:</strong> 24 ساعة يومياً</p>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div class="admin-modal" id="adminModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 99999; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; padding: 30px; border-radius: 20px; max-width: 500px; width: 100%;">
+            <h2 style="text-align: center; margin-bottom: 30px;">🔒 لوحة التحكم</h2>
+            <div style="margin-bottom: 20px;">
+                <label>اسم المستخدم:</label>
+                <input type="text" id="adminUser" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; margin-bottom: 15px;">
+            </div>
+            <div style="margin-bottom: 30px;">
+                <label>كلمة المرور:</label>
+                <input type="password" id="adminPass" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px;">
+            </div>
+            <button onclick="loginAdmin()" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-size: 1.1em; cursor: pointer;">
+                دخول
+            </button>
+            <button onclick="closeAdmin()" style="background: #eee; border: none; padding: 15px; width: 100%; border-radius: 10px; margin-top: 15px; cursor: pointer;">
+                إلغاء
+            </button>
         </div>
-        
-        <p style="margin-top: 30px; opacity: 0.8; position: relative; z-index: 1;">
-            © 2024 كافتيريا الخير - جميع الحقوق محفوظة
-        </p>
     </div>
 
     <script>
-        // بيانات المنتجات الكاملة
+        // منتجات حقيقية بأسعار من 500 فما فوق
         const products = [
-            // العصائر
-            { id: 1, name: "عصير برتقال طازج", desc: "عصير برتقال طازج مع قطع فواكه، 500 مل، فيتامين سي", price: 5000, category: "juice", icon: "🍊", featured: true },
-            { id: 2, name: "عصير فراولة موز", desc: "مزيج فراولة وموز مع حليب طازج، 500 مل", price: 5500, category: "juice", icon: "🍓" },
-            { id: 3, name: "عصير مانجو استوائي", desc: "مانجو طازج مع قليل من الحليب، 450 مل", price: 6000, category: "juice", icon: "🥭", featured: true },
-            { id: 4, name: "عصير أفوكادو صحي", desc: "أفوكادو مع حليب وعسل، 400 مل", price: 7000, category: "juice", icon: "🥑" },
-            { id: 5, name: "مشروب الطاقة بالفراولة", desc: "مشروب طاقة مع فراولة وتوت، 350 مل", price: 4500, category: "juice", icon: "⚡" },
+            // عصائر طازجة
+            { id: 1, name: "عصير برتقال طازج", desc: "برتقال يمني طازج يُعصر أمامك، 500 مل، فيتامين سي كامل", price: 1500, category: "juice", image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=800&h=600&fit=crop", premium: true },
+            { id: 2, name: "عصير فراولة موز", desc: "مزيج فراولة طازجة وموز ناضج مع حليب بارد", price: 1800, category: "juice", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w-800&h=600&fit=crop" },
+            { id: 3, name: "عصير مانجو استوائي", desc: "مانجو استوائي طازج مع قليل من الحليب البارد", price: 2000, category: "juice", image: "https://images.unsplash.com/photo-1571575173700-afb9492e6a50?w=800&h=600&fit=crop", premium: true },
+            { id: 4, name: "عصير أفوكادو صحي", desc: "أفوكادو طازج مع حليب وعسل طبيعي", price: 2500, category: "juice", image: "https://images.unsplash.com/photo-1532300482488-8a7c7c6d5c3c?w=800&h=600&fit=crop" },
+            { id: 5, name: "عصير أناناس بالنعناع", desc: "أناناس طازج مع أوراق نعناع، منعش للغاية", price: 1700, category: "juice", image: "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=800&h=600&fit=crop" },
             
-            // السندوتشات
-            { id: 6, name: "سندوتش شاورما دجاج", desc: "شاورما دجاج مع خضار وصوص خاص، حجم كبير", price: 7500, category: "sandwich", icon: "🥙", featured: true },
-            { id: 7, name: "سندوتش برجر لحم", desc: "برجر لحم مع جبنة وخضار، 250 جرام", price: 8500, category: "sandwich", icon: "🍔" },
-            { id: 8, name: "سندوتش فيليه دجاج", desc: "فيلية دجاج مقلي مع مايونيز، حجم وسط", price: 6500, category: "sandwich", icon: "🍗" },
-            { id: 9, name: "سندوتش جبنة مشوية", desc: "ثلاث أنواع جبن مشوية مع توست خاص", price: 5000, category: "sandwich", icon: "🧀" },
-            { id: 10, name: "سندوتش تونا", desc: "تونا مع مايونيز وخضار، حجم كبير", price: 6000, category: "sandwich", icon: "🐟" },
+            // سندوتشات
+            { id: 6, name: "سندوتش شاورما دجاج", desc: "شاورما دجاج مع خضار وصوص خاص، حجم كبير", price: 3500, category: "sandwich", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop", premium: true },
+            { id: 7, name: "سندوتش برجر لحم", desc: "برجر لحم مع جبنة شيدر وخضار طازجة", price: 4000, category: "sandwich", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop" },
+            { id: 8, name: "سندوتش فيليه دجاج", desc: "فيلية دجاج مقلي مع مايونيز وخس", price: 3000, category: "sandwich", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&h=600&fit=crop" },
             
             // وجبات خفيفة
-            { id: 11, name: "بطاطس مقلية", desc: "بطاطس مقلية مقرمشة مع صوص، وسط", price: 3500, category: "snack", icon: "🍟" },
-            { id: 12, name: "حلقات بصل مقلية", desc: "حلقات بصل مقرمشة مع صوص خاص", price: 4000, category: "snack", icon: "🧅" },
-            { id: 13, name: "نقانق مشوية", desc: "نقانق ألمانية مشوية مع صوص، 3 قطع", price: 5500, category: "snack", icon: "🌭" },
-            { id: 14, name: "تشكن ستريبس", desc: "شرائح دجاج مقلية مع صوص، 6 قطع", price: 6000, category: "snack", icon: "🍗" },
-            { id: 15, name: "سلطة خضار طازجة", desc: "سلطة خضار مع صوص إيطالي، طبق كبير", price: 4500, category: "snack", icon: "🥗" },
+            { id: 9, name: "بطاطس مقلية كبيرة", desc: "بطاطس مقلية مقرمشة مع 3 أنواع صوص", price: 1500, category: "snack", image: "https://images.unsplash.com/photo-1576107232684-1279f7b7b17e?w=800&h=600&fit=crop" },
+            { id: 10, name: "تشكن ستريبس", desc: "شرائح دجاج مقلية مع صوص خاص، 8 قطع", price: 2800, category: "snack", image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=800&h=600&fit=crop" },
             
             // مشروبات ساخنة
-            { id: 16, name: "كابتشينو إيطالي", desc: "قهوة إيطالية مع رغوة حليب، 350 مل", price: 6000, category: "hot", icon: "☕", featured: true },
-            { id: 17, name: "شاي أخضر بالنعناع", desc: "شاي أخضر طازج مع أوراق نعناع", price: 2500, category: "hot", icon: "🍵" },
-            { id: 18, name: "موكا شوكولاتة", desc: "قهوة مع شوكولاتة وكريمة، 400 مل", price: 7000, category: "hot", icon: "🍫" },
-            { id: 19, name: "نسكافيه ثلاثي واحد", desc: "نسكافيه 3 في 1 مع حليب، 300 مل", price: 3000, category: "hot", icon: "☕" },
-            { id: 20, name: "شاي كرك خاص", desc: "شاي كرك بالبهارات الخاصة، 350 مل", price: 4000, category: "hot", icon: "🫖" },
+            { id: 11, name: "كابتشينو إيطالي", desc: "قهوة إيطالية مع رغوة حليب، 350 مل", price: 2000, category: "hot", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=800&h=600&fit=crop", premium: true },
+            { id: 12, name: "موكا شوكولاتة", desc: "قهوة مع شوكولاتة سائلة وكريمة", price: 2500, category: "hot", image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop" },
             
             // حلويات
-            { id: 21, name: "تشيز كيك بالتوت", desc: "تشيز كيك بالتوت والكريمة، قطعة", price: 4500, category: "dessert", icon: "🍰" },
-            { id: 22, name: "دونات شوكولاتة", desc: "دونات طازج مع شوكولاتة، 2 قطعة", price: 3500, category: "dessert", icon: "🍩" },
-            { id: 23, name: "كرواسون شوكولاتة", desc: "كرواسون فرنسي بحشوة شوكولاتة", price: 3000, category: "dessert", icon: "🥐" },
-            { id: 24, name: "آيس كريم فانيلا", desc: "آيس كريم فانيلا إيطالي، كوب", price: 4000, category: "dessert", icon: "🍨" },
-            { id: 25, name: "وافل بلجيكي", desc: "وافل بلجيكي مع شوكولاتة ومكسرات", price: 5500, category: "dessert", icon: "🧇" }
+            { id: 13, name: "تشيز كيك بالتوت", desc: "تشيز كيك بالتوت الطازج والكريمة", price: 2200, category: "dessert", image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=600&fit=crop" },
+            { id: 14, name: "وافل بلجيكي", desc: "وافل بلجيكي مع شوكولاتة ومكسرات", price: 2800, category: "dessert", image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=800&h=600&fit=crop", premium: true }
         ];
 
-        // عربة التسوق
-        let cart = JSON.parse(localStorage.getItem('cart_khairy')) || [];
-        
-        // عرض المنتجات
-        function displayProducts(category = 'all') {
+        let cart = JSON.parse(localStorage.getItem('khairy_cart')) || [];
+        let selectedPayment = 'creamy';
+        const ADMIN_USER = "khairy_admin";
+        const ADMIN_PASS = "Khairy@2024";
+
+        // تحميل المنتجات
+        function loadProducts() {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
             
-            const filtered = category === 'all' 
-                ? products 
-                : products.filter(p => p.category === category);
-            
-            filtered.forEach(product => {
-                const isInCart = cart.some(item => item.id === product.id);
+            products.forEach(product => {
+                const cartItem = cart.find(item => item.id === product.id);
+                const quantity = cartItem ? cartItem.quantity : 1;
+                
                 container.innerHTML += `
-                    <div class="product-card ${product.featured ? 'featured' : ''}">
-                        <div class="product-img">${product.icon}</div>
-                        <div class="product-info">
-                            <h3 class="product-title">${product.name}</h3>
-                            <p class="product-desc">${product.desc}</p>
-                            <span class="product-price">${product.price.toLocaleString()} ر.ي</span>
-                            <button class="add-to-cart ${isInCart ? 'added' : ''}" onclick="addToCart(${product.id})">
-                                ${isInCart ? '<i class="fas fa-check"></i> مضافة إلى السلة' : '<i class="fas fa-cart-plus"></i> أضف إلى السلة'}
+                    <div class="juice-card ${product.premium ? 'premium' : ''}">
+                        <div class="juice-image" style="background-image: url('${product.image}')"></div>
+                        <div class="juice-info">
+                            <h3 class="juice-name">${product.name}</h3>
+                            <p class="juice-desc">${product.desc}</p>
+                            <span class="juice-price">${product.price.toLocaleString()} ر.ي</span>
+                            
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="updateQuantity(${product.id}, -1)">-</button>
+                                <span class="quantity" id="qty-${product.id}">${quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${product.id}, 1)">+</button>
+                            </div>
+                            
+                            <button class="add-to-cart ${cartItem ? 'added' : ''}" onclick="addToCart(${product.id})">
+                                <i class="fas fa-${cartItem ? 'check' : 'cart-plus'}"></i>
+                                ${cartItem ? 'مضافة إلى السلة' : 'أضف إلى السلة'}
                             </button>
                         </div>
                     </div>
                 `;
             });
+            
             updateCartCount();
         }
-        
-        // إضافة إلى السلة
+
+        // إدارة السلة
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
+            let existingItem = cart.find(item => item.id === productId);
             
             if (existingItem) {
-                existingItem.quantity = (existingItem.quantity || 1) + 1;
+                existingItem.quantity += 1;
             } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            saveCart();
+            loadProducts();
+            showNotification(`تمت إضافة ${product.name} إلى السلة`);
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 1) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+            } else if (change > 0) {
+                const product = products.find(p => p.id === productId);
                 cart.push({...product, quantity: 1});
             }
             
-            localStorage.setItem('cart_khairy', JSON.stringify(cart));
+            saveCart();
+            document.getElementById(`qty-${productId}`).textContent = 
+                cart.find(item => item.id === productId)?.quantity || 1;
             updateCartCount();
-            
-            // تحديث الزر
-            const buttons = document.querySelectorAll(`.add-to-cart`);
-            buttons.forEach(btn => {
-                if (btn.onclick && btn.onclick.toString().includes(productId)) {
-                    btn.classList.add('added');
-                    btn.innerHTML = '<i class="fas fa-check"></i> مضافة إلى السلة';
-                }
-            });
-            
-            // إشعار
-            showNotification(`تمت إضافة ${product.name} إلى السلة`);
         }
-        
-        // تصفية المنتجات
-        function filterCategory(category) {
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            displayProducts(category);
+
+        function saveCart() {
+            localStorage.setItem('khairy_cart', JSON.stringify(cart));
+            updateCartCount();
         }
-        
-        // تحديث عداد السلة
+
         function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            document.getElementById('cart-count').textContent = totalItems;
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = total;
         }
-        
-        // إظهار نافذة الطلب
-        function showOrderModal() {
-            const modal = document.getElementById('order-modal');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
+
+        // إدارة السلة الجانبية
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('open');
+            loadCartItems();
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('open');
+        }
+
+        function loadCartItems() {
+            const container = document.getElementById('cartItems');
+            const totalElement = document.getElementById('cartTotal');
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align:center; padding:40px; color:#666">السلة فارغة. أضف بعض المنتجات!</p>';
-                cartTotal.textContent = '0';
-            } else {
-                let itemsHTML = '';
-                let total = 0;
-                
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * (item.quantity || 1);
-                    total += itemTotal;
-                    
-                    itemsHTML += `
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee;">
-                            <div>
-                                <strong>${item.name}</strong>
-                                <div style="font-size:0.9em; color:#666">${item.quantity || 1} × ${item.price.toLocaleString()} ر.ي</div>
-                            </div>
-                            <div>
-                                <strong>${itemTotal.toLocaleString()} ر.ي</strong>
-                                <button onclick="removeFromCart(${index})" style="background:#ff6b6b; color:white; border:none; padding:5px 10px; border-radius:5px; margin-right:10px; cursor:pointer">×</button>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                cartItems.innerHTML = itemsHTML;
-                cartTotal.textContent = total.toLocaleString();
-            }
-            
-            document.getElementById('orderModal').style.display = 'flex';
-        }
-        
-        // إغلاق نافذة الطلب
-        function closeOrderModal() {
-            document.getElementById('orderModal').style.display = 'none';
-        }
-        
-        // إزالة من السلة
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart_khairy', JSON.stringify(cart));
-            updateCartCount();
-            displayProducts(document.querySelector('.category-btn.active')?.dataset?.category || 'all');
-            showOrderModal();
-        }
-        
-        // إرسال الطلب عبر واتساب
-        function sendOrder() {
-            if (cart.length === 0) {
-                alert("السلة فارغة!");
+                container.innerHTML = '<p style="text-align:center; padding:40px; color:#666">السلة فارغة</p>';
+                totalElement.textContent = '0';
                 return;
             }
             
-            let message = "🚀 *طلب جديد من تطبيق كافتيريا الخير*\n\n";
-            message += "📋 *تفاصيل الطلب:*\n";
+            let html = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; background: #f9f9f9; border-radius: 10px; margin-bottom: 10px;">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <div style="font-size:0.9em; color:#666">
+                                ${item.quantity} × ${item.price.toLocaleString()} ر.ي
+                            </div>
+                        </div>
+                        <div style="text-align: left;">
+                            <strong>${itemTotal.toLocaleString()} ر.ي</strong>
+                            <button onclick="removeFromCart(${index})" style="background:#ff6b6b; color:white; border:none; width:30px; height:30px; border-radius:50%; margin-right:10px; cursor:pointer">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            totalElement.textContent = total.toLocaleString();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            loadCartItems();
+            loadProducts();
+        }
+
+        // إدارة الدفع
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            event.target.closest('.payment-option').classList.add('selected');
+        }
+
+        // إتمام الطلب
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification("السلة فارغة! أضف منتجات أولاً");
+                return;
+            }
+            
+            let message = "🚀 *طلب جديد - كافتيريا الخير*\n\n";
+            message += "📋 *تفاصيل الطلب:*\n\n";
             
             let total = 0;
             cart.forEach((item, index) => {
-                const itemTotal = item.price * (item.quantity || 1);
+                const itemTotal = item.price * item.quantity;
                 total += itemTotal;
-                message += `${index + 1}. ${item.name} - ${item.quantity || 1} × ${item.price.toLocaleString()} = ${itemTotal.toLocaleString()} ر.ي\n`;
+                message += `▫️ ${item.name}\n`;
+                message += `   الكمية: ${item.quantity} × ${item.price.toLocaleString()} = ${itemTotal.toLocaleString()} ر.ي\n\n`;
             });
             
-            message += `\n💰 *الإجمالي: ${total.toLocaleString()} ر.ي*\n`;
-            message += `\n📍 *العنوان للشحن:*\n`;
-            message += `(يرجى كتابة عنوانك هنا)\n`;
-            message += `\n📞 *رقم الجوال:*\n`;
-            message += `(يرجى كتابة رقمك هنا)\n`;
-            message += `\n---\n`;
+            message += `💰 *الإجمالي: ${total.toLocaleString()} ر.ي*\n\n`;
+            message += `💳 *طريقة الدفع: ${selectedPayment === 'creamy' ? 'كريمي باي (1299834)' : selectedPayment === 'cash' ? 'نقداً عند الاستلام' : 'فودافون كاش'}*\n\n`;
+            message += `📍 *العنوان للشحن:*\n(يرجى كتابة العنوان)\n\n`;
+            message += `📞 *رقم الجوال:*\n(رقم العميل)\n\n`;
             message += `🕒 *وقت الطلب:* ${new Date().toLocaleString('ar-YE')}\n`;
-            message += `🏪 *كافتيريا الخير*\n`;
-            message += `📞 967730528609\n`;
+            message += `🏪 كافتيريا الخير\n`;
+            message += `📞 +967730528609\n`;
+            message += `📍 ${window.location.href.includes('maps') ? window.location.href : 'https://maps.app.goo.gl/5gUmyVspsHZK5GLH7'}`;
             
             const whatsappUrl = `https://wa.me/967730528609?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             
-            // تفريغ السلة بعد الإرسال
-            cart = [];
-            localStorage.setItem('cart_khairy', JSON.stringify(cart));
-            updateCartCount();
-            closeOrderModal();
-            displayProducts();
+            // حفظ الطلب في localStorage
+            const order = {
+                id: Date.now(),
+                items: [...cart],
+                total: total,
+                payment: selectedPayment,
+                date: new Date().toISOString(),
+                status: 'pending'
+            };
             
-            showNotification("تم إرسال طلبك بنجاح! سيتواصل معك فريقنا قريباً.");
+            let orders = JSON.parse(localStorage.getItem('khairy_orders')) || [];
+            orders.push(order);
+            localStorage.setItem('khairy_orders', JSON.stringify(orders));
+            
+            // تفريغ السلة
+            cart = [];
+            saveCart();
+            closeCart();
+            loadProducts();
+            
+            showNotification("✅ تم إرسال طلبك! سيتم التواصل معك قريباً.");
         }
-        
-        // إظهار إشعار
+
+        // لوحة التحكم
+        function openAdminPanel() {
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function loginAdmin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                // لوحة التحكم الحقيقية
+                const adminContent = `
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: white; z-index: 999999; padding: 20px; overflow-y: auto;">
+                        <h2>لوحة تحكم كافتيريا الخير</h2>
+                        <button onclick="location.reload()" style="position: absolute; top: 20px; left: 20px; background: #ff6b6b; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">
+                            خروج
+                        </button>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 15px;">
+                                <h3>📊 إحصائيات</h3>
+                                <p>عدد الطلبات: ${JSON.parse(localStorage.getItem('khairy_orders') || '[]').length}</p>
+                                <p>الإيرادات: ${calculateRevenue()} ر.ي</p>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 15px;">
+                                <h3>📦 إدارة المنتجات</h3>
+                                <button onclick="addNewProduct()" style="background: var(--fresh); color: white; border: none; padding: 10px; border-radius: 10px; margin: 5px; cursor: pointer;">
+                                    إضافة منتج
+                                </button>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 15px;">
+                                <h3>📝 الطلبات الأخيرة</h3>
+                                <div id="recentOrders"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.insertAdjacentHTML('beforeend', adminContent);
+                loadRecentOrders();
+                closeAdmin();
+            } else {
+                alert("بيانات الدخول غير صحيحة!");
+            }
+        }
+
+        function calculateRevenue() {
+            const orders = JSON.parse(localStorage.getItem('khairy_orders') || '[]');
+            return orders.reduce((sum, order) => sum + order.total, 0).toLocaleString();
+        }
+
+        function loadRecentOrders() {
+            const orders = JSON.parse(localStorage.getItem('khairy_orders') || '[]');
+            const container = document.getElementById('recentOrders');
+            
+            if (orders.length === 0) {
+                container.innerHTML = "<p>لا توجد طلبات</p>";
+                return;
+            }
+            
+            let html = '';
+            orders.slice(-5).forEach(order => {
+                html += `
+                    <div style="background: white; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                        <strong>طلب #${order.id}</strong><br>
+                        ${order.total.toLocaleString()} ر.ي - ${new Date(order.date).toLocaleString('ar-YE')}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function addNewProduct() {
+            const name = prompt("اسم المنتج:");
+            const price = prompt("السعر:");
+            const desc = prompt("الوصف:");
+            const category = prompt("الفئة (juice, sandwich, snack, hot, dessert):");
+            
+            if (name && price && desc && category) {
+                const newProduct = {
+                    id: products.length + 1,
+                    name: name,
+                    desc: desc,
+                    price: parseInt(price),
+                    category: category,
+                    image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=800&h=600&fit=crop"
+                };
+                
+                products.push(newProduct);
+                localStorage.setItem('khairy_products', JSON.stringify(products));
+                loadProducts();
+                showNotification("تمت إضافة المنتج بنجاح!");
+            }
+        }
+
+        // فيديوهات
+        function playVideo(element) {
+            const video = element.querySelector('video');
+            if (video.paused) {
+                video.play();
+                video.controls = true;
+            } else {
+                video.pause();
+                video.controls = false;
+            }
+        }
+
+        // الإشعارات
         function showNotification(text) {
-            // إنشاء عنصر الإشعار
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: linear-gradient(135deg, #27ae60, #2ecc71);
+                background: linear-gradient(135deg, var(--fresh), #2ecc71);
                 color: white;
                 padding: 15px 25px;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                border-radius: 15px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
                 z-index: 9999;
                 animation: slideIn 0.3s, fadeOut 0.3s 2.7s;
                 font-weight: bold;
                 max-width: 300px;
+                text-align: center;
             `;
             notification.textContent = text;
             document.body.appendChild(notification);
             
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
+            setTimeout(() => notification.remove(), 3000);
         }
-        
-        // تحديث زر واتساب
-        function updateWhatsAppButton() {
-            const btn = document.getElementById('whatsappBtn');
-            let message = "مرحباً، أريد الاستفسار عن منتجات كافتيريا الخير";
-            btn.href = `https://wa.me/967730528609?text=${encodeURIComponent(message)}`;
-        }
-        
-        // تهيئة التطبيق
+
+        // التحميل الأولي
         document.addEventListener('DOMContentLoaded', () => {
-            // إخفاء التحميل
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-            }, 1500);
+            loadProducts();
             
-            displayProducts();
-            updateCartCount();
-            updateWhatsAppButton();
+            // تحميل منتجات مخصصة إذا وجدت
+            const savedProducts = localStorage.getItem('khairy_products');
+            if (savedProducts) {
+                products.push(...JSON.parse(savedProducts));
+                loadProducts();
+            }
             
-            // إضافة زر التثبيت
-            if (window.matchMedia('(display-mode: browser)').matches) {
-                showInstallPrompt();
+            // تحديث خريطة الموقع
+            document.querySelector('iframe').src = "https://maps.app.goo.gl/5gUmyVspsHZK5GLH7";
+            
+            // PWA Support
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js');
             }
         });
-        
-        // دعم PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js');
-            });
-        }
-        
-        // عرض رسالة التثبيت
-        function showInstallPrompt() {
-            const installPrompt = document.createElement('div');
-            installPrompt.style.cssText = `
-                position: fixed;
-                bottom: 100px;
-                right: 20px;
-                background: white;
-                padding: 15px;
-                border-radius: 10px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-                z-index: 999;
-                border: 2px solid var(--primary);
-                max-width: 300px;
-            `;
-            installPrompt.innerHTML = `
-                <strong>📱 تثبيت التطبيق</strong>
-                <p>لتجربة أفضل، قم بتثبيت التطبيق على هاتفك</p>
-                <button onclick="installApp()" style="background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">
-                    <i class="fas fa-download"></i> تثبيت الآن
-                </button>
-            `;
-            document.body.appendChild(installPrompt);
+
+        // دعم التثبيت
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
             
             setTimeout(() => {
-                installPrompt.remove();
-            }, 10000);
-        }
-        
-        function installApp() {
-            if (window.deferredPrompt) {
-                window.deferredPrompt.prompt();
-            }
+                if (confirm("هل تريد تثبيت تطبيق كافتيريا الخير على هاتفك؟")) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(() => {
+                        deferredPrompt = null;
+                    });
+                }
+            }, 5000);
+        });
+    </script>
+
+    <!-- خدمة العامل -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(() => {
+                    console.log('Service Worker registered');
+                });
+            });
         }
     </script>
 </body>

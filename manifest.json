@@ -1,0 +1,74 @@
+{
+  "name": "كافتيريا الخير",
+  "short_name": "كافتيريا الخير",
+  "description": "متجر الكافتيريا الإلكتروني - أجود العصائر والسندوتشات - مفتوح 24 ساعة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#c28a5c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3082/3082383.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&h=1280&fit=crop",
+      "sizes": "800x1280",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["food", "shopping"],
+  "shortcuts": [
+    {
+      "name": "عرض القائمة",
+      "short_name": "القائمة",
+      "description": "عرض جميع المنتجات",
+      "url": "/#products"
+    },
+    {
+      "name": "اتصل بنا",
+      "short_name": "اتصل",
+      "description": "اتصال سريع",
+      "url": "tel:+967730528609"
+    }
+  ]
+}

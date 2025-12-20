@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Multi Timezone Digital Clock</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Digital Clocks — Multiple Time Zones</h1>
+      <p class="lead">Live updating clocks for multiple IANA time zones. Add your own, toggle 12/24-hour, and save favorites.</p>
+    </header>
+
+    <section class="controls" aria-label="Controls">
+      <label for="presetSelect">Add preset zone:</label>
+      <select id="presetSelect" aria-label="Preset time zones">
+        <option value="">-- choose --</option>
+      </select>
+      <button id="addPresetBtn" type="button">Add</button>
+
+      <label for="customZone">Or add custom IANA zone:</label>
+      <input id="customZone" type="text" placeholder="e.g. America/New_York" aria-label="Custom IANA time zone" />
+      <button id="addCustomBtn" type="button">Add custom</button>
+
+      <label for="hour12Toggle" class="toggle-label">
+        <input id="hour12Toggle" type="checkbox" />
+        Use 12-hour clock
+      </label>
+
+      <button id="clearBtn" type="button" class="danger">Clear all</button>
+    </section>
+
+    <section id="clocks" class="clocks" aria-live="polite" aria-label="Time zone clocks">
+      <!-- clocks inserted here -->
+    </section>
+
+    <footer class="footer">
+      <p>Tips: Use valid IANA tz names (e.g. "Europe/London", "Asia/Riyadh"). The app persists your list and 12/24 preference.</p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

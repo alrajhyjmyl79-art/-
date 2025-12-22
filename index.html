@@ -1,46 +1,1001 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Multi Timezone Digital Clock</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <main class="app">
-    <header class="app-header">
-      <h1>Digital Clocks — Multiple Time Zones</h1>
-      <p class="lead">Live updating clocks for multiple IANA time zones. Add your own, toggle 12/24-hour, and save favorites.</p>
-    </header>
+<!-- في قسم سلة الطلب (Cart Drawer) بعد السطر 360 -->
+<!-- استبدل القسم الحالي بالتصميم الجديد: -->
 
-    <section class="controls" aria-label="Controls">
-      <label for="presetSelect">Add preset zone:</label>
-      <select id="presetSelect" aria-label="Preset time zones">
-        <option value="">-- choose --</option>
-      </select>
-      <button id="addPresetBtn" type="button">Add</button>
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true" aria-labelledby="cartTitle" role="dialog">
+  <!-- طبقة التعتيم الخلفية -->
+  <div class="cart-overlay" id="cartOverlay" tabindex="-1" aria-label="إغلاق السلة"></div>
+  
+  <div class="cart-content">
+    <!-- رأس السلة -->
+    <div class="cart-header">
+      <div class="cart-title-section">
+        <h3 id="cartTitle" class="cart-title">
+          <span class="cart-icon">🛒</span>
+          سلة الطلب
+        </h3>
+        <div class="cart-items-count" id="cartItemsCount">0 منتج</div>
+      </div>
+      <button id="closeCartBtn" class="cart-close-btn" aria-label="إغلاق سلة المشتريات">
+        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- محتوى السلة -->
+    <div class="cart-body">
+      <!-- حالة السلة الفارغة -->
+      <div id="emptyCart" class="empty-cart-state">
+        <div class="empty-cart-icon">🛒</div>
+        <h4 class="empty-cart-title">سلة المشتريات فارغة</h4>
+        <p class="empty-cart-desc">أضف منتجات من القائمة لتبدأ التسوق</p>
+        <button class="btn btn-primary" id="continueShoppingBtn">
+          <span class="btn-icon">←</span>
+          متابعة التسوق
+        </button>
+      </div>
+      
+      <!-- عناصر السلة -->
+      <div id="cartItems" class="cart-items" role="list" aria-label="عناصر السلة">
+        <!-- ستتم إضافة العناصر ديناميكياً -->
+      </div>
+    </div>
+    
+    <!-- ملخص الطلب -->
+    <div class="cart-summary">
+      <!-- تفاصيل التكلفة -->
+      <div class="summary-section">
+        <h4 class="summary-title">تفاصيل الطلب</h4>
+        <div class="summary-row">
+          <div class="summary-label">
+            <span>المجموع الفرعي</span>
+            <span class="summary-desc">(0 منتج)</span>
+          </div>
+          <div class="summary-value">
+            <span id="subtotal" class="amount" aria-live="polite">0</span>
+            <span class="currency">ريال</span>
+          </div>
+        </div>
+        
+        <div class="summary-row">
+          <div class="summary-label">
+            <span>رسوم التوصيل</span>
+            <span class="summary-desc">(لجميع أنحاء المدينة)</span>
+          </div>
+          <div class="summary-value">
+            <span id="delivery" class="amount">500</span>
+            <span class="currency">ريال</span>
+          </div>
+        </div>
+        
+        <div class="summary-row total-row">
+          <div class="summary-label">
+            <span class="total-label">الإجمالي الكلي</span>
+            <span class="summary-desc">(شامل التوصيل)</span>
+          </div>
+          <div class="summary-value total-value">
+            <span id="total" class="total-amount" aria-live="polite">0</span>
+            <span class="currency">ريال</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- كود الخصم -->
+      <div class="coupon-section">
+        <h4 class="coupon-title">هل لديك كود خصم؟</h4>
+        <div class="coupon-input-group">
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="couponInput" 
+              class="coupon-input"
+              placeholder="أدخل كود الخصم هنا..." 
+              aria-label="أدخل كود الخصم"
+              maxlength="20"
+            />
+            <div class="input-icon">🎁</div>
+          </div>
+          <button id="applyCouponBtn" class="btn coupon-btn" aria-label="تطبيق كود الخصم">
+            <span class="btn-text">تطبيق</span>
+          </button>
+        </div>
+        <div id="couponMessage" class="coupon-message" aria-live="polite"></div>
+      </div>
+      
+      <!-- طرق الدفع -->
+      <div class="payment-section">
+        <h4 class="payment-title">اختر طريقة الدفع</h4>
+        <div class="payment-options">
+          <div class="payment-option">
+            <input 
+              type="radio" 
+              id="cod" 
+              name="payment" 
+              value="cod" 
+              checked
+              class="payment-radio"
+              aria-describedby="cod-desc"
+            />
+            <label for="cod" class="payment-label">
+              <span class="payment-icon">💵</span>
+              <div class="payment-details">
+                <span class="payment-name">الدفع عند الاستلام</span>
+                <span id="cod-desc" class="payment-desc">ادفع نقداً عند استلام الطلب</span>
+              </div>
+              <div class="radio-indicator"></div>
+            </label>
+          </div>
+          
+          <div class="payment-option">
+            <input 
+              type="radio" 
+              id="kuraimi" 
+              name="payment" 
+              value="kuraimi"
+              class="payment-radio"
+              aria-describedby="kuraimi-desc"
+            />
+            <label for="kuraimi" class="payment-label">
+              <span class="payment-icon">🏦</span>
+              <div class="payment-details">
+                <span class="payment-name">الدفع عبر كريمي</span>
+                <span id="kuraimi-desc" class="payment-desc">
+                  رقم الحساب: <strong class="account-number">1299834</strong>
+                </span>
+              </div>
+              <div class="radio-indicator"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ملاحظات الطلب -->
+      <div class="notes-section">
+        <div class="notes-header">
+          <label for="orderNotes" class="notes-label">
+            <span class="notes-icon">📝</span>
+            ملاحظات إضافية للطلب (اختياري)
+          </label>
+          <div class="char-counter">
+            <span id="notesCount">0</span>/250
+          </div>
+        </div>
+        <textarea 
+          id="orderNotes" 
+          class="order-notes"
+          rows="3" 
+          placeholder="مثال: رن الجرس مرتين، بدون بصل، تخفيض الملح، إلخ..."
+          maxlength="250"
+          aria-label="أضف ملاحظات للطلب"
+        ></textarea>
+      </div>
+      
+      <!-- أزرار الإجراءات -->
+      <div class="action-buttons">
+        <button id="checkoutBtn" class="btn checkout-btn" disabled>
+          <span class="btn-icon">✓</span>
+          <span class="btn-text">إتمام الطلب</span>
+          <span class="total-badge" id="checkoutTotal">0 ريال</span>
+        </button>
+        
+        <div class="secondary-actions">
+          <button id="clearCartBtn" class="btn clear-btn" aria-label="تفريغ السلة">
+            <span class="btn-icon">🗑️</span>
+            تفريغ السلة
+          </button>
+          <button class="btn continue-btn" id="continueShoppingBtn2">
+            <span class="btn-icon">←</span>
+            متابعة التسوق
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
 
-      <label for="customZone">Or add custom IANA zone:</label>
-      <input id="customZone" type="text" placeholder="e.g. America/New_York" aria-label="Custom IANA time zone" />
-      <button id="addCustomBtn" type="button">Add custom</button>
+<!-- CSS المطلوب (أضفه في ملف style.css) -->
+<style>
+/* تصميم سلة الطلب */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
 
-      <label for="hour12Toggle" class="toggle-label">
-        <input id="hour12Toggle" type="checkbox" />
-        Use 12-hour clock
-      </label>
+.cart-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 
-      <button id="clearBtn" type="button" class="danger">Clear all</button>
-    </section>
+.cart-drawer[aria-hidden="false"] .cart-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    <section id="clocks" class="clocks" aria-live="polite" aria-label="Time zone clocks">
-      <!-- clocks inserted here -->
-    </section>
+.cart-content {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+}
 
-    <footer class="footer">
-      <p>Tips: Use valid IANA tz names (e.g. "Europe/London", "Asia/Riyadh"). The app persists your list and 12/24 preference.</p>
-    </footer>
-  </main>
+.cart-drawer[aria-hidden="false"] .cart-content {
+  transform: translateX(0);
+}
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+/* رأس السلة */
+.cart-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #38C172, #2d9959);
+}
+
+.cart-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-title {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-icon {
+  font-size: 1.3rem;
+}
+
+.cart-items-count {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.cart-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.cart-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.close-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* محتوى السلة */
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.empty-cart-state {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty-cart-icon {
+  font-size: 4rem;
+  opacity: 0.2;
+  margin-bottom: 10px;
+}
+
+.empty-cart-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 0;
+}
+
+.empty-cart-desc {
+  color: #666;
+  margin: 0;
+}
+
+/* عناصر السلة */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cart-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cart-item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #38C172;
+  margin: 0;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border-radius: 25px;
+  padding: 4px;
+  border: 1px solid #ddd;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #f8f9fa;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.quantity-btn:hover {
+  background: #e9ecef;
+}
+
+.quantity-value {
+  font-weight: 600;
+  color: #333;
+  min-width: 30px;
+  text-align: center;
+}
+
+.remove-item-btn {
+  background: #fee;
+  color: #e74c3c;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+
+.remove-item-btn:hover {
+  background: #fdd;
+}
+
+/* ملخص الطلب */
+.cart-summary {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.summary-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.summary-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.summary-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-desc {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.summary-value {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.amount {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.currency {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.total-row {
+  padding-top: 15px;
+  border-top: 2px solid #eee;
+  margin-top: 5px;
+}
+
+.total-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.total-value {
+  font-size: 1.3rem;
+}
+
+.total-amount {
+  color: #38C172;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* كود الخصم */
+.coupon-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.coupon-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.coupon-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.coupon-input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  font-family: 'Cairo', sans-serif;
+}
+
+.coupon-input:focus {
+  outline: none;
+  border-color: #38C172;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.coupon-btn {
+  background: #38C172;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: 'Cairo', sans-serif;
+}
+
+.coupon-btn:hover {
+  background: #2d9959;
+}
+
+.coupon-message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  min-height: 20px;
+}
+
+.coupon-message.success {
+  color: #38C172;
+}
+
+.coupon-message.error {
+  color: #e74c3c;
+}
+
+/* طرق الدفع */
+.payment-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.payment-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-option {
+  position: relative;
+}
+
+.payment-radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.payment-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-radio:checked + .payment-label {
+  border-color: #38C172;
+  background: #f0f9f4;
+}
+
+.payment-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.payment-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.payment-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.payment-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.account-number {
+  color: #38C172;
+  font-family: monospace;
+  background: #f0f9f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.radio-indicator {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.payment-radio:checked + .payment-label .radio-indicator {
+  border-color: #38C172;
+  background: #38C172;
+}
+
+.payment-radio:checked + .payment-label .radio-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ملاحظات الطلب */
+.notes-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.notes-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+
+.notes-icon {
+  font-size: 1.2rem;
+}
+
+.char-counter {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.order-notes {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Cairo', sans-serif;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s ease;
+}
+
+.order-notes:focus {
+  outline: none;
+  border-color: #38C172;
+}
+
+/* أزرار الإجراءات */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkout-btn {
+  background: linear-gradient(135deg, #38C172, #2d9959);
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkout-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.checkout-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(56, 193, 114, 0.3);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: center;
+}
+
+.total-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.secondary-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.clear-btn {
+  background: #fee;
+  color: #e74c3c;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #fdd;
+}
+
+.continue-btn {
+  background: #e9ecef;
+  color: #333;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.continue-btn:hover {
+  background: #dee2e6;
+}
+
+/* تحسينات للجوال */
+@media (max-width: 768px) {
+  .cart-content {
+    max-width: 100%;
+    border-radius: 0;
+  }
+  
+  .cart-header,
+  .cart-body,
+  .cart-summary {
+    padding: 15px;
+  }
+  
+  .summary-section,
+  .coupon-section,
+  .payment-section,
+  .notes-section {
+    padding: 15px;
+  }
+  
+  .cart-title {
+    font-size: 1.3rem;
+  }
+  
+  .checkout-btn {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  
+  .secondary-actions {
+    flex-direction: column;
+  }
+}
+
+/* أنيميشن دخول */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cart-drawer[aria-hidden="false"] .cart-content {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.cart-drawer[aria-hidden="false"] .cart-overlay {
+  animation: fadeIn 0.3s ease forwards;
+}
+</style>
+
+<!-- JavaScript للتحكم بالسلة (مثال) -->
+<script>
+// هذا مثال للتحكم بالسلة - تحتاج لتطبيقه في ملف main.js
+class CartManager {
+  constructor() {
+    this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.updateCartCount();
+  }
+
+  addToCart(product) {
+    const existingItem = this.cart.find(item => item.id === product.id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      this.cart.push({ ...product, quantity: 1 });
+    }
+    this.saveCart();
+    this.updateCartDisplay();
+  }
+
+  removeFromCart(productId) {
+    this.cart = this.cart.filter(item => item.id !== productId);
+    this.saveCart();
+    this.updateCartDisplay();
+  }
+
+  updateQuantity(productId, quantity) {
+    const item = this.cart.find(item => item.id === productId);
+    if (item) {
+      if (quantity <= 0) {
+        this.removeFromCart(productId);
+      } else {
+        item.quantity = quantity;
+      }
+      this.saveCart();
+      this.updateCartDisplay();
+    }
+  }
+
+  clearCart() {
+    this.cart = [];
+    this.saveCart();
+    this.updateCartDisplay();
+  }
+
+  getCartTotal() {
+    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+
+  getDeliveryFee() {
+    return 500; // رسوم التوصيل الثابتة
+  }
+
+  getGrandTotal() {
+    return this.getCartTotal() + this.getDeliveryFee();
+  }
+
+  saveCart() {
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.updateCartCount();
+  }
+
+  updateCartCount() {
+    const count = this.cart.reduce((total, item) => total + item.quantity, 0);
+    const countElement = document.getElementById('cartCount');
+    if (countElement) {
+      countElement.textContent = count;
+    }
+  }
+
+  updateCartDisplay() {
+    // تحديث عرض السلة
+    this.renderCartItems();
+    this.updateSummary();
+  }
+
+  renderCartItems() {
+    // كود عرض العناصر في السلة
+  }
+
+  updateSummary() {
+    // كود تحديث الملخص
+  }
+}
+
+// تهيئة مدير السلة
+const cartManager = new CartManager();
+</script>
